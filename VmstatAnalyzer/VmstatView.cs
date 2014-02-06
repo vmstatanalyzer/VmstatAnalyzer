@@ -103,14 +103,38 @@ namespace VmstatAnalyzer
             }
             else
             {
-                InitTrackBars(count);
+                if (count == 0)
+                {
+                    this.Cursor = Cursors.Default;
+                    OnErrorHandler();
+                    return;
+                }
 
-                UpdateStartTime();
-                UpdateEndTime();
-                UpdateData();
+                try
+                {
+                    InitTrackBars(count);
 
-                this.Cursor = Cursors.Default;
+                    UpdateStartTime();
+                    UpdateEndTime();
+                    UpdateData();
+                }
+                catch (Exception)
+                {
+                    OnErrorHandler();
+                }
+                finally
+                {
+                    this.Cursor = Cursors.Default;
+                }
             }
+        }
+
+        void OnErrorHandler()
+        {
+            MessageBox.Show("Invalid file format or OS type.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            this.DockHandler.HideOnClose = false;
+            this.DockHandler.Close();
+            this.Close();
         }
 
         #region Delegates
@@ -252,13 +276,6 @@ namespace VmstatAnalyzer
             splitContainerFaultsOuter.Visible = checkBoxInterrupt.Checked || checkBoxContextSwitches.Checked;
         }
 
-        private void Page_CheckedChanged(object sender, EventArgs e)
-        {
-            splitContainerPageOuter.Panel1Collapsed = !checkBoxPageIn.Checked;
-            splitContainerPageOuter.Panel2Collapsed = !checkBoxPageOut.Checked;
-            splitContainerPageOuter.Visible = checkBoxPageIn.Checked || checkBoxPageOut.Checked;
-        }
-
         #endregion EventHandlers
 
 
@@ -268,6 +285,7 @@ namespace VmstatAnalyzer
         {
             this.os = os;
             InitializeCharts();
+            InitializeComboBoxPage();
 
             dataSource.LoadDataAsync(path, os);
         }
@@ -296,12 +314,9 @@ namespace VmstatAnalyzer
             chartBuilder.InterruptChart = chartInterrupt;
             chartBuilder.ContextSwitchesChart = chartContextSwitches;
 
-            chartBuilder.PageIOChart = chartPageIn;
-            chartBuilder.PageChart = chartPageOut;
+            chartBuilder.PageChart = chartPage;
 
             chartBuilder.Build(os);
-
-            chartBuilder = null;
         }
 
         private void InitTrackBars(int count)
@@ -488,32 +503,11 @@ namespace VmstatAnalyzer
             lblCSAvg.Text = string.Format("{0:N}", dataSource.Average(columnName));
         }
 
-        private void UpdatePageInStatistics()
+        private void UpdatePageStatistics(string column)
         {
-            string columnName = "page_pi";
-
-            if (os == OS.Linux)
-            {
-                columnName = "swap_si";
-            }
-
-            lblPageInMin.Text = string.Format("{0:N0}", dataSource.Min(columnName));
-            lblPageInMax.Text = string.Format("{0:N0}", dataSource.Max(columnName));
-            lblPageInAvg.Text = string.Format("{0:N}", dataSource.Average(columnName));
-        }
-
-        private void UpdatePageOutStatistics()
-        {
-            string columnName = "page_po";
-
-            if (os == OS.Linux)
-            {
-                columnName = "swap_so";
-            }
-
-            lblPageSRMin.Text = string.Format("{0:N0}", dataSource.Min(columnName));
-            lblPageSRMax.Text = string.Format("{0:N0}", dataSource.Max(columnName));
-            lblPageSRAvg.Text = string.Format("{0:N}", dataSource.Average(columnName));
+            lblPageMin.Text = string.Format("{0:N0}", dataSource.Min(column));
+            lblPageMax.Text = string.Format("{0:N0}", dataSource.Max(column));
+            lblPageAvg.Text = string.Format("{0:N}", dataSource.Average(column));
         }
 
         private void UpdateCharts()
@@ -581,14 +575,9 @@ namespace VmstatAnalyzer
                     break;
 
                 case 5:
-                    chartPageIn.DataSource = bindingSource;
-                    chartPageOut.DataSource = bindingSource;
-
-                    chartPageIn.DataBind();
-                    chartPageOut.DataBind();
-
-                    UpdatePageInStatistics();
-                    UpdatePageOutStatistics();
+                    chartPage.DataSource = bindingSource;
+                    chartPage.DataBind();
+                    UpdatePageChart();
                     break;
 
                 case 6:
@@ -604,6 +593,26 @@ namespace VmstatAnalyzer
         {
             bindingSourceRawData.DataSource = dataSource.GetBindingTableView();
             dataGrid.DataSource = bindingSourceRawData;
+        }
+
+        private void InitializeComboBoxPage()
+        {
+            comboBoxPage.Items.AddRange(dataSource.GetPageNames(os));
+            if (comboBoxPage.Items.Count > 0)
+            {
+                comboBoxPage.SelectedIndex = 0;
+            }
+        }
+
+        private void UpdatePageChart()
+        {
+            string column = comboBoxPage.Text;
+
+            chartBuilder.InitPageChart(chartPage, os, column);
+            if (chartPage.DataSource != null)
+            {
+                UpdatePageStatistics(column);
+            }
         }
 
         #endregion Methods
@@ -634,48 +643,9 @@ namespace VmstatAnalyzer
             
         }
 
-        private void SetChartVisible(bool visible)
+        private void comboBoxPage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (tabControl.SelectedIndex)
-            {
-                case 0:
-                    chartCPUOverview.Visible = visible;
-                    chartMemoryOverview.Visible = visible;
-                    chartThreadsOverview.Visible = visible;
-                    chartFaultsOverview.Visible = visible;
-                    break;
-
-                case 1:
-                    chartCPU.Visible = visible;
-                    chartCPUTotal.Visible = visible;
-                    break;
-
-                case 2:
-                    chartMemoryAvm.Visible = visible;
-                    chartMemoryFree.Visible = visible;
-                    break;
-
-                case 3:
-                    chartThreadsR.Visible = visible;
-                    chartThreadsB.Visible = visible;
-                    break;
-
-                case 4:
-                    chartInterrupt.Visible = visible;
-                    chartContextSwitches.Visible = visible;
-                    break;
-
-                case 5:
-                    chartPageIn.Visible = visible;
-                    chartPageOut.Visible = visible;
-                    break;
-
-                case 6:
-                    break;
-
-                default:
-                    break;
-            }
+            UpdatePageChart();
         }
     }
 }

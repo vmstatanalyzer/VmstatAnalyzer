@@ -91,10 +91,6 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title13 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title14 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VmstatView));
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.chartThreadsR = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -288,36 +284,22 @@
             this.label51 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panel53 = new System.Windows.Forms.Panel();
-            this.splitContainerPageOuter = new System.Windows.Forms.SplitContainer();
             this.panel54 = new System.Windows.Forms.Panel();
-            this.chartPageIn = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartPage = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
             this.panel55 = new System.Windows.Forms.Panel();
-            this.lblPageInAvg = new System.Windows.Forms.Label();
+            this.lblPageAvg = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.panel64 = new System.Windows.Forms.Panel();
-            this.lblPageInMax = new System.Windows.Forms.Label();
+            this.lblPageMax = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.panel65 = new System.Windows.Forms.Panel();
-            this.lblPageInMin = new System.Windows.Forms.Label();
+            this.lblPageMin = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
-            this.panel66 = new System.Windows.Forms.Panel();
-            this.chartPageOut = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel67 = new System.Windows.Forms.Panel();
-            this.lblPageSRAvg = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.panel68 = new System.Windows.Forms.Panel();
-            this.lblPageSRMax = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.panel69 = new System.Windows.Forms.Panel();
-            this.lblPageSRMin = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
             this.panel51 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
-            this.checkBoxPageIn = new System.Windows.Forms.CheckBox();
-            this.checkBoxPageOut = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.comboBoxPage = new System.Windows.Forms.ComboBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.dataGrid = new System.Windows.Forms.DataGrid();
             this.contextMenuStripRawData = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -458,22 +440,12 @@
             this.tableLayoutPanel16.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.panel53.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPageOuter)).BeginInit();
-            this.splitContainerPageOuter.Panel1.SuspendLayout();
-            this.splitContainerPageOuter.Panel2.SuspendLayout();
-            this.splitContainerPageOuter.SuspendLayout();
             this.panel54.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartPageIn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPage)).BeginInit();
             this.tableLayoutPanel18.SuspendLayout();
             this.panel55.SuspendLayout();
             this.panel64.SuspendLayout();
             this.panel65.SuspendLayout();
-            this.panel66.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartPageOut)).BeginInit();
-            this.tableLayoutPanel19.SuspendLayout();
-            this.panel67.SuspendLayout();
-            this.panel68.SuspendLayout();
-            this.panel69.SuspendLayout();
             this.panel51.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -3239,7 +3211,8 @@
             // 
             // panel53
             // 
-            this.panel53.Controls.Add(this.splitContainerPageOuter);
+            this.panel53.Controls.Add(this.panel54);
+            this.panel53.Controls.Add(this.tableLayoutPanel18);
             this.panel53.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel53.Font = new System.Drawing.Font("굴림", 9F);
             this.panel53.Location = new System.Drawing.Point(3, 26);
@@ -3248,41 +3221,21 @@
             this.panel53.Size = new System.Drawing.Size(758, 469);
             this.panel53.TabIndex = 19;
             // 
-            // splitContainerPageOuter
-            // 
-            this.splitContainerPageOuter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerPageOuter.Location = new System.Drawing.Point(3, 3);
-            this.splitContainerPageOuter.Name = "splitContainerPageOuter";
-            this.splitContainerPageOuter.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainerPageOuter.Panel1
-            // 
-            this.splitContainerPageOuter.Panel1.Controls.Add(this.panel54);
-            this.splitContainerPageOuter.Panel1.Controls.Add(this.tableLayoutPanel18);
-            // 
-            // splitContainerPageOuter.Panel2
-            // 
-            this.splitContainerPageOuter.Panel2.Controls.Add(this.panel66);
-            this.splitContainerPageOuter.Panel2.Controls.Add(this.tableLayoutPanel19);
-            this.splitContainerPageOuter.Size = new System.Drawing.Size(752, 463);
-            this.splitContainerPageOuter.SplitterDistance = 222;
-            this.splitContainerPageOuter.TabIndex = 13;
-            // 
             // panel54
             // 
-            this.panel54.Controls.Add(this.chartPageIn);
+            this.panel54.Controls.Add(this.chartPage);
             this.panel54.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel54.Location = new System.Drawing.Point(0, 20);
+            this.panel54.Location = new System.Drawing.Point(3, 23);
             this.panel54.Name = "panel54";
-            this.panel54.Size = new System.Drawing.Size(752, 202);
+            this.panel54.Size = new System.Drawing.Size(752, 443);
             this.panel54.TabIndex = 14;
             // 
-            // chartPageIn
+            // chartPage
             // 
-            this.chartPageIn.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(59)))), ((int)(((byte)(105)))));
-            this.chartPageIn.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            this.chartPageIn.BorderlineWidth = 2;
-            this.chartPageIn.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Emboss;
+            this.chartPage.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(59)))), ((int)(((byte)(105)))));
+            this.chartPage.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.chartPage.BorderlineWidth = 2;
+            this.chartPage.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Emboss;
             chartArea13.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
             chartArea13.AxisX.LineColor = System.Drawing.Color.LightGray;
             chartArea13.AxisX.MajorGrid.Enabled = false;
@@ -3296,29 +3249,28 @@
             chartArea13.CursorX.IsUserSelectionEnabled = true;
             chartArea13.CursorX.LineColor = System.Drawing.Color.DarkKhaki;
             chartArea13.Name = "ChartArea1";
-            this.chartPageIn.ChartAreas.Add(chartArea13);
-            this.chartPageIn.ContextMenuStrip = this.contextMenuStrip;
-            this.chartPageIn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartPage.ChartAreas.Add(chartArea13);
+            this.chartPage.ContextMenuStrip = this.contextMenuStrip;
+            this.chartPage.Dock = System.Windows.Forms.DockStyle.Fill;
             legend13.Alignment = System.Drawing.StringAlignment.Center;
             legend13.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
             legend13.Name = "Legend1";
-            this.chartPageIn.Legends.Add(legend13);
-            this.chartPageIn.Location = new System.Drawing.Point(0, 0);
-            this.chartPageIn.Name = "chartPageIn";
-            this.chartPageIn.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
+            this.chartPage.Legends.Add(legend13);
+            this.chartPage.Location = new System.Drawing.Point(0, 0);
+            this.chartPage.Name = "chartPage";
             series23.BorderWidth = 2;
             series23.ChartArea = "ChartArea1";
             series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series23.Legend = "Legend1";
             series23.Name = "Series1";
-            this.chartPageIn.Series.Add(series23);
-            this.chartPageIn.Size = new System.Drawing.Size(752, 202);
-            this.chartPageIn.TabIndex = 3;
-            this.chartPageIn.Text = "chart1";
+            this.chartPage.Series.Add(series23);
+            this.chartPage.Size = new System.Drawing.Size(752, 443);
+            this.chartPage.TabIndex = 3;
+            this.chartPage.Text = "chart1";
             title13.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             title13.Name = "Title1";
-            title13.Text = "Page In";
-            this.chartPageIn.Titles.Add(title13);
+            title13.Text = "Page";
+            this.chartPage.Titles.Add(title13);
             // 
             // tableLayoutPanel18
             // 
@@ -3332,7 +3284,7 @@
             this.tableLayoutPanel18.Controls.Add(this.panel64, 2, 0);
             this.tableLayoutPanel18.Controls.Add(this.panel65, 1, 0);
             this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel18.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel18.Name = "tableLayoutPanel18";
             this.tableLayoutPanel18.RowCount = 1;
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -3341,7 +3293,7 @@
             // 
             // panel55
             // 
-            this.panel55.Controls.Add(this.lblPageInAvg);
+            this.panel55.Controls.Add(this.lblPageAvg);
             this.panel55.Controls.Add(this.label37);
             this.panel55.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel55.Location = new System.Drawing.Point(494, 0);
@@ -3350,14 +3302,14 @@
             this.panel55.Size = new System.Drawing.Size(237, 20);
             this.panel55.TabIndex = 8;
             // 
-            // lblPageInAvg
+            // lblPageAvg
             // 
-            this.lblPageInAvg.AutoSize = true;
-            this.lblPageInAvg.Location = new System.Drawing.Point(38, 5);
-            this.lblPageInAvg.Name = "lblPageInAvg";
-            this.lblPageInAvg.Size = new System.Drawing.Size(11, 12);
-            this.lblPageInAvg.TabIndex = 1;
-            this.lblPageInAvg.Text = "0";
+            this.lblPageAvg.AutoSize = true;
+            this.lblPageAvg.Location = new System.Drawing.Point(38, 5);
+            this.lblPageAvg.Name = "lblPageAvg";
+            this.lblPageAvg.Size = new System.Drawing.Size(11, 12);
+            this.lblPageAvg.TabIndex = 1;
+            this.lblPageAvg.Text = "0";
             // 
             // label37
             // 
@@ -3371,7 +3323,7 @@
             // 
             // panel64
             // 
-            this.panel64.Controls.Add(this.lblPageInMax);
+            this.panel64.Controls.Add(this.lblPageMax);
             this.panel64.Controls.Add(this.label41);
             this.panel64.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel64.Location = new System.Drawing.Point(257, 0);
@@ -3380,14 +3332,14 @@
             this.panel64.Size = new System.Drawing.Size(237, 20);
             this.panel64.TabIndex = 7;
             // 
-            // lblPageInMax
+            // lblPageMax
             // 
-            this.lblPageInMax.AutoSize = true;
-            this.lblPageInMax.Location = new System.Drawing.Point(42, 5);
-            this.lblPageInMax.Name = "lblPageInMax";
-            this.lblPageInMax.Size = new System.Drawing.Size(11, 12);
-            this.lblPageInMax.TabIndex = 1;
-            this.lblPageInMax.Text = "0";
+            this.lblPageMax.AutoSize = true;
+            this.lblPageMax.Location = new System.Drawing.Point(42, 5);
+            this.lblPageMax.Name = "lblPageMax";
+            this.lblPageMax.Size = new System.Drawing.Size(11, 12);
+            this.lblPageMax.TabIndex = 1;
+            this.lblPageMax.Text = "0";
             // 
             // label41
             // 
@@ -3401,7 +3353,7 @@
             // 
             // panel65
             // 
-            this.panel65.Controls.Add(this.lblPageInMin);
+            this.panel65.Controls.Add(this.lblPageMin);
             this.panel65.Controls.Add(this.label45);
             this.panel65.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel65.Location = new System.Drawing.Point(20, 0);
@@ -3410,14 +3362,14 @@
             this.panel65.Size = new System.Drawing.Size(237, 20);
             this.panel65.TabIndex = 0;
             // 
-            // lblPageInMin
+            // lblPageMin
             // 
-            this.lblPageInMin.AutoSize = true;
-            this.lblPageInMin.Location = new System.Drawing.Point(38, 5);
-            this.lblPageInMin.Name = "lblPageInMin";
-            this.lblPageInMin.Size = new System.Drawing.Size(11, 12);
-            this.lblPageInMin.TabIndex = 1;
-            this.lblPageInMin.Text = "0";
+            this.lblPageMin.AutoSize = true;
+            this.lblPageMin.Location = new System.Drawing.Point(38, 5);
+            this.lblPageMin.Name = "lblPageMin";
+            this.lblPageMin.Size = new System.Drawing.Size(11, 12);
+            this.lblPageMin.TabIndex = 1;
+            this.lblPageMin.Text = "0";
             // 
             // label45
             // 
@@ -3428,166 +3380,6 @@
             this.label45.Size = new System.Drawing.Size(39, 12);
             this.label45.TabIndex = 0;
             this.label45.Text = "Min: ";
-            // 
-            // panel66
-            // 
-            this.panel66.Controls.Add(this.chartPageOut);
-            this.panel66.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel66.Location = new System.Drawing.Point(0, 20);
-            this.panel66.Name = "panel66";
-            this.panel66.Size = new System.Drawing.Size(752, 217);
-            this.panel66.TabIndex = 13;
-            // 
-            // chartPageOut
-            // 
-            this.chartPageOut.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(59)))), ((int)(((byte)(105)))));
-            this.chartPageOut.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            this.chartPageOut.BorderlineWidth = 2;
-            this.chartPageOut.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Emboss;
-            chartArea14.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea14.AxisX.LineColor = System.Drawing.Color.LightGray;
-            chartArea14.AxisX.MajorGrid.Enabled = false;
-            chartArea14.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea14.AxisX.MajorTickMark.LineColor = System.Drawing.Color.LightGray;
-            chartArea14.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea14.AxisY.LineColor = System.Drawing.Color.LightGray;
-            chartArea14.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea14.AxisY.MajorTickMark.LineColor = System.Drawing.Color.LightGray;
-            chartArea14.CursorX.IsUserEnabled = true;
-            chartArea14.CursorX.IsUserSelectionEnabled = true;
-            chartArea14.CursorX.LineColor = System.Drawing.Color.DarkKhaki;
-            chartArea14.Name = "ChartArea1";
-            this.chartPageOut.ChartAreas.Add(chartArea14);
-            this.chartPageOut.ContextMenuStrip = this.contextMenuStrip;
-            this.chartPageOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend14.Alignment = System.Drawing.StringAlignment.Center;
-            legend14.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend14.Name = "Legend1";
-            this.chartPageOut.Legends.Add(legend14);
-            this.chartPageOut.Location = new System.Drawing.Point(0, 0);
-            this.chartPageOut.Name = "chartPageOut";
-            series24.BorderWidth = 2;
-            series24.ChartArea = "ChartArea1";
-            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series24.Legend = "Legend1";
-            series24.Name = "Series1";
-            this.chartPageOut.Series.Add(series24);
-            this.chartPageOut.Size = new System.Drawing.Size(752, 217);
-            this.chartPageOut.TabIndex = 3;
-            this.chartPageOut.Text = "chart3";
-            title14.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title14.Name = "Title1";
-            title14.Text = "Page Out";
-            this.chartPageOut.Titles.Add(title14);
-            // 
-            // tableLayoutPanel19
-            // 
-            this.tableLayoutPanel19.ColumnCount = 5;
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel19.Controls.Add(this.panel67, 3, 0);
-            this.tableLayoutPanel19.Controls.Add(this.panel68, 2, 0);
-            this.tableLayoutPanel19.Controls.Add(this.panel69, 1, 0);
-            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel19.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
-            this.tableLayoutPanel19.RowCount = 1;
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel19.Size = new System.Drawing.Size(752, 20);
-            this.tableLayoutPanel19.TabIndex = 12;
-            // 
-            // panel67
-            // 
-            this.panel67.Controls.Add(this.lblPageSRAvg);
-            this.panel67.Controls.Add(this.label49);
-            this.panel67.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel67.Location = new System.Drawing.Point(494, 0);
-            this.panel67.Margin = new System.Windows.Forms.Padding(0);
-            this.panel67.Name = "panel67";
-            this.panel67.Size = new System.Drawing.Size(237, 20);
-            this.panel67.TabIndex = 8;
-            // 
-            // lblPageSRAvg
-            // 
-            this.lblPageSRAvg.AutoSize = true;
-            this.lblPageSRAvg.Location = new System.Drawing.Point(38, 5);
-            this.lblPageSRAvg.Name = "lblPageSRAvg";
-            this.lblPageSRAvg.Size = new System.Drawing.Size(11, 12);
-            this.lblPageSRAvg.TabIndex = 1;
-            this.lblPageSRAvg.Text = "0";
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label49.Location = new System.Drawing.Point(3, 5);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(39, 12);
-            this.label49.TabIndex = 0;
-            this.label49.Text = "Avg: ";
-            // 
-            // panel68
-            // 
-            this.panel68.Controls.Add(this.lblPageSRMax);
-            this.panel68.Controls.Add(this.label54);
-            this.panel68.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel68.Location = new System.Drawing.Point(257, 0);
-            this.panel68.Margin = new System.Windows.Forms.Padding(0);
-            this.panel68.Name = "panel68";
-            this.panel68.Size = new System.Drawing.Size(237, 20);
-            this.panel68.TabIndex = 7;
-            // 
-            // lblPageSRMax
-            // 
-            this.lblPageSRMax.AutoSize = true;
-            this.lblPageSRMax.Location = new System.Drawing.Point(42, 5);
-            this.lblPageSRMax.Name = "lblPageSRMax";
-            this.lblPageSRMax.Size = new System.Drawing.Size(11, 12);
-            this.lblPageSRMax.TabIndex = 1;
-            this.lblPageSRMax.Text = "0";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label54.Location = new System.Drawing.Point(3, 5);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(43, 12);
-            this.label54.TabIndex = 0;
-            this.label54.Text = "Max: ";
-            // 
-            // panel69
-            // 
-            this.panel69.Controls.Add(this.lblPageSRMin);
-            this.panel69.Controls.Add(this.label58);
-            this.panel69.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel69.Location = new System.Drawing.Point(20, 0);
-            this.panel69.Margin = new System.Windows.Forms.Padding(0);
-            this.panel69.Name = "panel69";
-            this.panel69.Size = new System.Drawing.Size(237, 20);
-            this.panel69.TabIndex = 0;
-            // 
-            // lblPageSRMin
-            // 
-            this.lblPageSRMin.AutoSize = true;
-            this.lblPageSRMin.Location = new System.Drawing.Point(38, 5);
-            this.lblPageSRMin.Name = "lblPageSRMin";
-            this.lblPageSRMin.Size = new System.Drawing.Size(11, 12);
-            this.lblPageSRMin.TabIndex = 1;
-            this.lblPageSRMin.Text = "0";
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label58.Location = new System.Drawing.Point(3, 5);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(39, 12);
-            this.label58.TabIndex = 0;
-            this.label58.Text = "Min: ";
             // 
             // panel51
             // 
@@ -3607,9 +3399,8 @@
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel14.Controls.Add(this.checkBoxPageIn, 3, 0);
-            this.tableLayoutPanel14.Controls.Add(this.checkBoxPageOut, 4, 0);
             this.tableLayoutPanel14.Controls.Add(this.label7, 1, 0);
+            this.tableLayoutPanel14.Controls.Add(this.comboBoxPage, 3, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel14.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
@@ -3617,32 +3408,6 @@
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel14.Size = new System.Drawing.Size(758, 23);
             this.tableLayoutPanel14.TabIndex = 0;
-            // 
-            // checkBoxPageIn
-            // 
-            this.checkBoxPageIn.AutoSize = true;
-            this.checkBoxPageIn.Checked = true;
-            this.checkBoxPageIn.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxPageIn.Location = new System.Drawing.Point(561, 3);
-            this.checkBoxPageIn.Name = "checkBoxPageIn";
-            this.checkBoxPageIn.Size = new System.Drawing.Size(67, 16);
-            this.checkBoxPageIn.TabIndex = 1;
-            this.checkBoxPageIn.Text = "Page In";
-            this.checkBoxPageIn.UseVisualStyleBackColor = true;
-            this.checkBoxPageIn.CheckedChanged += new System.EventHandler(this.Page_CheckedChanged);
-            // 
-            // checkBoxPageOut
-            // 
-            this.checkBoxPageOut.AutoSize = true;
-            this.checkBoxPageOut.Checked = true;
-            this.checkBoxPageOut.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxPageOut.Location = new System.Drawing.Point(661, 3);
-            this.checkBoxPageOut.Name = "checkBoxPageOut";
-            this.checkBoxPageOut.Size = new System.Drawing.Size(76, 16);
-            this.checkBoxPageOut.TabIndex = 2;
-            this.checkBoxPageOut.Text = "Page Out";
-            this.checkBoxPageOut.UseVisualStyleBackColor = true;
-            this.checkBoxPageOut.CheckedChanged += new System.EventHandler(this.Page_CheckedChanged);
             // 
             // label7
             // 
@@ -3653,6 +3418,16 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Chart";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // comboBoxPage
+            // 
+            this.comboBoxPage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPage.FormattingEnabled = true;
+            this.comboBoxPage.Location = new System.Drawing.Point(561, 3);
+            this.comboBoxPage.Name = "comboBoxPage";
+            this.comboBoxPage.Size = new System.Drawing.Size(94, 20);
+            this.comboBoxPage.TabIndex = 1;
+            this.comboBoxPage.SelectedIndexChanged += new System.EventHandler(this.comboBoxPage_SelectedIndexChanged);
             // 
             // tabPage7
             // 
@@ -3988,12 +3763,8 @@
             this.tableLayoutPanel16.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.panel53.ResumeLayout(false);
-            this.splitContainerPageOuter.Panel1.ResumeLayout(false);
-            this.splitContainerPageOuter.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPageOuter)).EndInit();
-            this.splitContainerPageOuter.ResumeLayout(false);
             this.panel54.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartPageIn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPage)).EndInit();
             this.tableLayoutPanel18.ResumeLayout(false);
             this.panel55.ResumeLayout(false);
             this.panel55.PerformLayout();
@@ -4001,18 +3772,8 @@
             this.panel64.PerformLayout();
             this.panel65.ResumeLayout(false);
             this.panel65.PerformLayout();
-            this.panel66.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartPageOut)).EndInit();
-            this.tableLayoutPanel19.ResumeLayout(false);
-            this.panel67.ResumeLayout(false);
-            this.panel67.PerformLayout();
-            this.panel68.ResumeLayout(false);
-            this.panel68.PerformLayout();
-            this.panel69.ResumeLayout(false);
-            this.panel69.PerformLayout();
             this.panel51.ResumeLayout(false);
             this.tableLayoutPanel14.ResumeLayout(false);
-            this.tableLayoutPanel14.PerformLayout();
             this.tabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.contextMenuStripRawData.ResumeLayout(false);
@@ -4229,34 +3990,17 @@
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Panel panel51;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
-        private System.Windows.Forms.CheckBox checkBoxPageIn;
-        private System.Windows.Forms.CheckBox checkBoxPageOut;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.SplitContainer splitContainerPageOuter;
-        private System.Windows.Forms.Panel panel54;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartPageIn;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
         private System.Windows.Forms.Panel panel55;
-        private System.Windows.Forms.Label lblPageInAvg;
+        private System.Windows.Forms.Label lblPageAvg;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Panel panel64;
-        private System.Windows.Forms.Label lblPageInMax;
+        private System.Windows.Forms.Label lblPageMax;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Panel panel65;
-        private System.Windows.Forms.Label lblPageInMin;
+        private System.Windows.Forms.Label lblPageMin;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Panel panel66;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartPageOut;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
-        private System.Windows.Forms.Panel panel67;
-        private System.Windows.Forms.Label lblPageSRAvg;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Panel panel68;
-        private System.Windows.Forms.Label lblPageSRMax;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.Panel panel69;
-        private System.Windows.Forms.Label lblPageSRMin;
-        private System.Windows.Forms.Label label58;
         private System.Windows.Forms.Panel panel53;
         private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
@@ -4265,5 +4009,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripRawData;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCopyToClipboardRaw;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExportRaw;
+        private System.Windows.Forms.Panel panel54;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartPage;
+        private System.Windows.Forms.ComboBox comboBoxPage;
     }
 }

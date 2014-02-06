@@ -21,15 +21,19 @@ namespace VmstatAnalyzer.Core
             formatInfo.LongTimePattern = "HH:mm:ss";
         }
 
+        /*
         private const int COLS_COUNT_AIX = 18;
 
         private const int COLS_COUNT_BSD = 20;
 
         private const int COLS_COUNT_HPUX = 19;
 
+        private const int COLS_COUNT_LINUX2541 = 17;
+
         private const int COLS_COUNT_LINUX = 18;
 
         private const int COLS_COUNT_SOLARIS = 23;
+         * */
 
 
         public event EventHandler LoadDataStart;
@@ -115,7 +119,7 @@ namespace VmstatAnalyzer.Core
             {
                 while ((line = reader.ReadLine()) != null)
                 {
-                    temp = regex.Replace(line, " ");
+                    temp = regex.Replace(line.Replace("\t", " "), " ");
                     values = temp.Split(' ');
 
                     if (values.Length == len)
@@ -338,14 +342,23 @@ namespace VmstatAnalyzer.Core
                         "faults_in", "faults_sy", "faults_cs", 
                         "cpu_us", "cpu_sy", "cpu_id" };
 
-                case OS.Linux:
+                case OS.Linux2541:
                     return new string[] { "time", 
-                        "procs_r", "procs_b", "procs_w", 
+                        "procs_r", "procs_b",
                         "memory_swpd", "memory_free", "memory_buff", "memory_cache", 
                         "swap_si", "swap_so", 
                         "io_bi", "io_bo", 
                         "system_in", "system_cs", 
                         "cpu_us", "cpu_sy", "cpu_id", "cpu_wa" };
+
+                case OS.Linux:
+                    return new string[] { "time", 
+                        "procs_r", "procs_b",
+                        "memory_swpd", "memory_free", "memory_buff", "memory_cache", 
+                        "swap_si", "swap_so", 
+                        "io_bi", "io_bo", 
+                        "system_in", "system_cs", 
+                        "cpu_us", "cpu_sy", "cpu_id", "cpu_wa", "cpu_st" };
 
                 case OS.Solaris:
                     return new string[] { "time", 
@@ -363,6 +376,31 @@ namespace VmstatAnalyzer.Core
                         "page_re", "page_pi", "page_po", "page_fr", "page_sr", "page_cy", 
                         "faults_in", "faults_sy", "faults_cs", 
                         "cpu_us", "cpu_sy", "cpu_id", "cpu_wa" };
+            }
+        }
+
+        public string[] GetPageNames(OS os)
+        {
+            switch (os)
+            {
+                case OS.AIX:
+                    return new string[] { "page_re", "page_pi", "page_po", "page_fr", "page_sr", "page_cy" };
+
+                case OS.BSD:
+                    return new string[] { "page_flt", "page_re", "page_pi", "page_po", "page_fr", "page_sr" };
+
+                case OS.HPUX:
+                    return new string[] { "page_re", "page_at", "page_pi", "page_po", "page_fr", "page_de", "page_sr" };
+
+                case OS.Linux2541:
+                case OS.Linux:
+                    return new string[] { "swap_si", "swap_so" };
+
+                case OS.Solaris:
+                    return new string[] { "page_re", "page_mf", "page_pi", "page_po", "page_fr", "page_de", "page_sr" };
+
+                default:
+                    return new string[] { "page_re", "page_pi", "page_po", "page_fr", "page_sr", "page_cy" };
             }
         }
 

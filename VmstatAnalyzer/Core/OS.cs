@@ -10,7 +10,8 @@ namespace VmstatAnalyzer.Core
     {
         AIX, 
         BSD, 
-        HPUX, 
+        HPUX,
+        Linux2541,
         Linux,
         Solaris 
     }

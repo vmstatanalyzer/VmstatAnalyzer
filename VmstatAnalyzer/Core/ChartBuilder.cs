@@ -28,9 +28,6 @@ namespace VmstatAnalyzer.Core
 
             InitInterruptChart(InterruptChart, os);
             InitContextSwitchesChart(ContextSwitchesChart, os);
-
-            InitPageInChart(PageIOChart, os);
-            InitPageOutChart(PageChart, os);
         }
 
         public Chart CPUChart { get; set; }
@@ -48,8 +45,6 @@ namespace VmstatAnalyzer.Core
         public Chart InterruptChart { get; set; }
 
         public Chart ContextSwitchesChart { get; set; }
-
-        public Chart PageIOChart { get; set; }
 
         public Chart PageChart { get; set; }
 
@@ -123,7 +118,7 @@ namespace VmstatAnalyzer.Core
                 series.XValueMember = "time";
                 series.YValueMembers = "procs_w";
             }
-            else if (os == OS.Linux)
+            else if (os == OS.Linux || os == OS.Linux2541)
             {
                 series = chart.Series[0];
                 series.Name = "procs_r";
@@ -144,7 +139,7 @@ namespace VmstatAnalyzer.Core
         {
             Series series = null;
 
-            if (os == OS.Linux)
+            if (os == OS.Linux || os == OS.Linux2541)
             {
                 series = chart.Series[0];
                 series.Name = "system_cs";
@@ -189,7 +184,7 @@ namespace VmstatAnalyzer.Core
             series.XValueMember = "time";
             series.YValueMembers = "cpu_sy";
 
-            if (os == OS.AIX || os == OS.Linux)
+            if (os == OS.AIX || os == OS.Linux || os == OS.Linux2541)
             {
                 series = chart.Series["cpu_wa"];
                 series.XValueMember = "time";
@@ -227,7 +222,7 @@ namespace VmstatAnalyzer.Core
             Series series = null;
             series = chart.Series[0];
 
-            if (os == OS.Linux)
+            if (os == OS.Linux || os == OS.Linux2541)
             {
                 series.Name = "memory_swpd";
                 series.XValueMember = "time";
@@ -332,7 +327,7 @@ namespace VmstatAnalyzer.Core
                 series.XValueMember = "time";
                 series.YValueMembers = "procs_w";
             }
-            else if (os == OS.Linux)
+            else if (os == OS.Linux || os == OS.Linux2541)
             {
                 series = chart.Series[0];
                 series.Name = "procs_b";
@@ -348,7 +343,7 @@ namespace VmstatAnalyzer.Core
         {
             Series series = null;
 
-            if (os == OS.Linux)
+            if (os == OS.Linux || os == OS.Linux2541)
             {
                 series = chart.Series[0];
                 series.Name = "system_in";
@@ -368,7 +363,7 @@ namespace VmstatAnalyzer.Core
         {
             Series series = null;
 
-            if (os == OS.Linux)
+            if (os == OS.Linux || os == OS.Linux2541)
             {
                 series = chart.Series[0];
                 series.Name = "system_cs";
@@ -384,44 +379,17 @@ namespace VmstatAnalyzer.Core
             }
         }
 
-        public void InitPageInChart(Chart chart, OS os)
+        public void InitPageChart(Chart chart, OS os, string name)
         {
             Series series = null;
+            series = chart.Series[0];
+            series.Name = name;
+            series.XValueMember = "time";
+            series.YValueMembers = name;
 
-            if (os == OS.Linux)
-            {
-                series = chart.Series[0];
-                series.Name = "swap_si";
-                series.XValueMember = "time";
-                series.YValueMembers = "swap_si";
-            }
-            else
-            {
-                series = chart.Series[0];
-                series.Name = "page_pi";
-                series.XValueMember = "time";
-                series.YValueMembers = "page_pi";
-            }
-        }
-
-        public void InitPageOutChart(Chart chart, OS os)
-        {
-            Series series = null;
-
-            if (os == OS.Linux)
-            {
-                series = chart.Series[0];
-                series.Name = "swap_so";
-                series.XValueMember = "time";
-                series.YValueMembers = "swap_so";
-            }
-            else
-            {
-                series = chart.Series[0];
-                series.Name = "page_po";
-                series.XValueMember = "time";
-                series.YValueMembers = "page_po";
-            }
+            Title title = null;
+            title = chart.Titles[0];
+            title.Text = name;
         }
     }
 }

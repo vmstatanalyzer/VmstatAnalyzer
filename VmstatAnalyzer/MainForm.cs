@@ -142,10 +142,14 @@ namespace VmstatAnalyzer
                     break;
 
                 case 3:
-                    os = OS.Linux;
+                    os = OS.Linux2541;
                     break;
 
                 case 4:
+                    os = OS.Linux;
+                    break;
+
+                case 5:
                     os = OS.BSD;
                     break;
 
