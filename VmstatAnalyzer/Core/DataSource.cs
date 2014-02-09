@@ -11,7 +11,7 @@ using System.Threading;
 
 namespace VmstatAnalyzer.Core
 {
-    public class DataSource
+    public class DataSource : IDisposable
     {
         public DataSource()
         {
@@ -119,8 +119,10 @@ namespace VmstatAnalyzer.Core
             {
                 while ((line = reader.ReadLine()) != null)
                 {
-                    temp = regex.Replace(line.Replace("\t", " "), " ");
-                    values = temp.Split(' ');
+                    char[] separator = new char[]{' '};
+
+                    temp = regex.Replace(line.Trim().Replace("\t", " "), " ");
+                    values = temp.Split(separator, StringSplitOptions.RemoveEmptyEntries);
 
                     if (values.Length == len)
                     {

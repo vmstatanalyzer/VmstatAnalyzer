@@ -120,7 +120,7 @@ namespace VmstatAnalyzer
 
                 dockContent.DockHandler.HideOnClose = false;
                 dockContent.DockHandler.Close();
-            }
+            }    
         }
 
         private void toolStripComboBoxServerType_SelectedIndexChanged(object sender, EventArgs e)
