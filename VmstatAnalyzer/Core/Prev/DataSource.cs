@@ -9,7 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 
-namespace VmstatAnalyzer.Core
+namespace VmstatAnalyzer.Domain
 {
     public class DataSource : IDisposable
     {
@@ -53,7 +53,7 @@ namespace VmstatAnalyzer.Core
 
         private string fileName;
 
-        private OS os;
+        private OSTypes os;
 
         private int maxPoints = 500;
 
@@ -76,7 +76,7 @@ namespace VmstatAnalyzer.Core
             public object rbound;
         }
 
-        public void LoadDataAsync(string fileName, OS os)
+        public void LoadDataAsync(string fileName, OSTypes os)
         {
             this.fileName = fileName;
             this.os = os;
@@ -101,11 +101,13 @@ namespace VmstatAnalyzer.Core
             }
         }
 
-        public int LoadData(string fileName, OS os)
+        public int LoadData(string fileName, OSTypes os)
         {
             CreateColumns(os);
 
             Regex regex = new Regex(" +");
+
+            char[] separator = new char[] { ' ' };
 
             string line = null;
             string temp = null;
@@ -119,8 +121,6 @@ namespace VmstatAnalyzer.Core
             {
                 while ((line = reader.ReadLine()) != null)
                 {
-                    char[] separator = new char[]{' '};
-
                     temp = regex.Replace(line.Trim().Replace("\t", " "), " ");
                     values = temp.Split(separator, StringSplitOptions.RemoveEmptyEntries);
 
@@ -287,7 +287,7 @@ namespace VmstatAnalyzer.Core
             return value;
         }
 
-        private void CreateColumns(OS os)
+        private void CreateColumns(OSTypes os)
         {
             DataColumn column = null;
             column = table.Columns.Add("index", typeof(int));
@@ -315,11 +315,11 @@ namespace VmstatAnalyzer.Core
             column.Expression = "100 - cpu_id";
         }
 
-        public string[] GetColumnNames(OS os)
+        public string[] GetColumnNames(OSTypes os)
         {
             switch (os)
             {
-                case OS.AIX:
+                case OSTypes.AIX:
                     return new string[] { "time", 
                         "kthr_r", "kthr_b", 
                         "memory_avm", "memory_fre", 
@@ -327,7 +327,7 @@ namespace VmstatAnalyzer.Core
                         "faults_in", "faults_sy", "faults_cs", 
                         "cpu_us", "cpu_sy", "cpu_id", "cpu_wa" };
 
-                case OS.BSD:
+                case OSTypes.BSD:
                     return new string[] { "time", 
                         "procs_r", "procs_b", "procs_w", 
                         "memory_avm", "memory_free", 
@@ -336,7 +336,7 @@ namespace VmstatAnalyzer.Core
                         "faults_in", "faults_sy", "faults_cs", 
                         "cpu_us", "cpu_sy", "cpu_id" };
 
-                case OS.HPUX:
+                case OSTypes.HPUX:
                     return new string[] { "time", 
                         "procs_r", "procs_b", "procs_w", 
                         "memory_avm", "memory_free", 
@@ -344,16 +344,7 @@ namespace VmstatAnalyzer.Core
                         "faults_in", "faults_sy", "faults_cs", 
                         "cpu_us", "cpu_sy", "cpu_id" };
 
-                case OS.Linux2541:
-                    return new string[] { "time", 
-                        "procs_r", "procs_b",
-                        "memory_swpd", "memory_free", "memory_buff", "memory_cache", 
-                        "swap_si", "swap_so", 
-                        "io_bi", "io_bo", 
-                        "system_in", "system_cs", 
-                        "cpu_us", "cpu_sy", "cpu_id", "cpu_wa" };
-
-                case OS.Linux:
+                case OSTypes.Linux:
                     return new string[] { "time", 
                         "procs_r", "procs_b",
                         "memory_swpd", "memory_free", "memory_buff", "memory_cache", 
@@ -362,7 +353,7 @@ namespace VmstatAnalyzer.Core
                         "system_in", "system_cs", 
                         "cpu_us", "cpu_sy", "cpu_id", "cpu_wa", "cpu_st" };
 
-                case OS.Solaris:
+                case OSTypes.Solaris:
                     return new string[] { "time", 
                         "procs_r", "procs_b", "procs_w", 
                         "memory_swap", "memory_free", 
@@ -381,24 +372,23 @@ namespace VmstatAnalyzer.Core
             }
         }
 
-        public string[] GetPageNames(OS os)
+        public string[] GetPageNames(OSTypes os)
         {
             switch (os)
             {
-                case OS.AIX:
+                case OSTypes.AIX:
                     return new string[] { "page_re", "page_pi", "page_po", "page_fr", "page_sr", "page_cy" };
 
-                case OS.BSD:
+                case OSTypes.BSD:
                     return new string[] { "page_flt", "page_re", "page_pi", "page_po", "page_fr", "page_sr" };
 
-                case OS.HPUX:
+                case OSTypes.HPUX:
                     return new string[] { "page_re", "page_at", "page_pi", "page_po", "page_fr", "page_de", "page_sr" };
 
-                case OS.Linux2541:
-                case OS.Linux:
+                case OSTypes.Linux:
                     return new string[] { "swap_si", "swap_so" };
 
-                case OS.Solaris:
+                case OSTypes.Solaris:
                     return new string[] { "page_re", "page_mf", "page_pi", "page_po", "page_fr", "page_de", "page_sr" };
 
                 default:

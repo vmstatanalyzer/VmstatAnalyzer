@@ -1,6 +1,6 @@
-﻿namespace VmstatAnalyzer
+﻿namespace VmstatAnalyzer.View
 {
-    partial class VmstatView
+    partial class VmstatView1
     {
         /// <summary>
         /// Required designer variable.
@@ -92,7 +92,7 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title13 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VmstatView));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VmstatView1));
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.chartThreadsR = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);

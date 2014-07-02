@@ -11,14 +11,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using VmstatAnalyzer.Core;
+using VmstatAnalyzer.Domain;
 using WeifenLuo.WinFormsUI.Docking;
 
-namespace VmstatAnalyzer
+namespace VmstatAnalyzer.View
 {
-    public partial class VmstatView : DockContent
+    public partial class VmstatView1 : DockContent
     {
-        public VmstatView()
+        public VmstatView1()
         {
             InitializeComponent();
 
@@ -151,7 +151,7 @@ namespace VmstatAnalyzer
 
         private DataSource dataSource = null;
 
-        private OS os = OS.AIX;
+        private OSTypes os = OSTypes.AIX;
 
         #endregion Fields
 
@@ -205,35 +205,30 @@ namespace VmstatAnalyzer
 
         private void comboBoxChartType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SeriesChartType chartType = SeriesChartType.StackedArea;
+
             switch (comboBoxChartType.SelectedIndex)
             {
                 case 0:
-                    foreach (Series series in chartCPU.Series)
-                    {
-                        series.ChartType = SeriesChartType.StackedArea;
-                    }
+                    chartType = SeriesChartType.StackedArea;
                     break;
 
                 case 1:
-                    foreach (Series series in chartCPU.Series)
-                    {
-                        series.ChartType = SeriesChartType.Area;
-                    }
+                    chartType = SeriesChartType.Area;
                     break;
 
                 case 2:
-                    foreach (Series series in chartCPU.Series)
-                    {
-                        series.ChartType = SeriesChartType.Line;
-                    }
+                    chartType = SeriesChartType.Line;
                     break;
 
                 default:
-                    foreach (Series series in chartCPU.Series)
-                    {
-                        series.ChartType = SeriesChartType.StackedArea;
-                    }
+                    chartType = SeriesChartType.StackedArea;
                     break;
+            }
+
+            foreach (Series series in chartCPU.Series)
+            {
+                series.ChartType = chartType;
             }
         }
 
@@ -281,7 +276,7 @@ namespace VmstatAnalyzer
 
         #region Methods
 
-        public void SetData(string path, OS os)
+        public void SetData(string path, OSTypes os)
         {
             this.os = os;
             InitializeCharts();
@@ -368,7 +363,7 @@ namespace VmstatAnalyzer
         {
             string columnName = "memory_free";
 
-            if (this.os == OS.AIX)
+            if (this.os == OSTypes.AIX)
             {
                 columnName = "memory_fre";
             }
@@ -382,7 +377,7 @@ namespace VmstatAnalyzer
         {
             string columnName = "procs_r";
 
-            if (this.os == OS.AIX)
+            if (this.os == OSTypes.AIX)
             {
                 columnName = "kthr_r";
             }
@@ -396,7 +391,7 @@ namespace VmstatAnalyzer
         {
             string columnName = "faults_cs";
 
-            if (this.os == OS.Linux)
+            if (this.os == OSTypes.Linux)
             {
                 columnName = "system_cs";
             }
@@ -419,7 +414,7 @@ namespace VmstatAnalyzer
         {
             string columnName = "memory_free";
 
-            if (this.os == OS.AIX)
+            if (this.os == OSTypes.AIX)
             {
                 columnName = "memory_fre";
             }
@@ -433,11 +428,11 @@ namespace VmstatAnalyzer
         {
             string columnName = "memory_avm";
 
-            if (this.os == OS.Linux)
+            if (this.os == OSTypes.Linux)
             {
                 columnName = "memory_swpd";
             }
-            else if (os == OS.Solaris)
+            else if (os == OSTypes.Solaris)
             {
                 columnName = "memory_swap";
             }
@@ -451,7 +446,7 @@ namespace VmstatAnalyzer
         {
             string columnName = "procs_r";
 
-            if (this.os == OS.AIX)
+            if (this.os == OSTypes.AIX)
             {
                 columnName = "kthr_r";
             }
@@ -465,7 +460,7 @@ namespace VmstatAnalyzer
         {
             string columnName = "procs_b";
 
-            if (os == OS.AIX)
+            if (os == OSTypes.AIX)
             {
                 columnName = "kthr_b";
             }
@@ -479,7 +474,7 @@ namespace VmstatAnalyzer
         {
             string columnName = "faults_in";
 
-            if (os == OS.Linux)
+            if (os == OSTypes.Linux)
             {
                 columnName = "system_in";
             }
@@ -493,7 +488,7 @@ namespace VmstatAnalyzer
         {
             string columnName = "faults_cs";
 
-            if (os == OS.Linux)
+            if (os == OSTypes.Linux)
             {
                 columnName = "system_cs";
             }

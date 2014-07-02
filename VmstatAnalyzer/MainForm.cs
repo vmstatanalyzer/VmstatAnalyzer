@@ -9,8 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VmstatAnalyzer.Core;
+using VmstatAnalyzer.Domain;
 using VmstatAnalyzer.Properties;
+using VmstatAnalyzer.View;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace VmstatAnalyzer
@@ -20,9 +21,15 @@ namespace VmstatAnalyzer
         public MainForm()
         {
             InitializeComponent();
+
+            //mainController = facade.GetController<MainController>();
         }
 
-        private OS os = OS.AIX;
+        //private Facade facade = Facade.Instance;
+
+        //private MainController mainController = null;
+
+        private OSTypes osType = OSTypes.AIX;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -35,6 +42,11 @@ namespace VmstatAnalyzer
             index = options.OS;
 
             toolStripComboBoxServerType.SelectedIndex = options.OS;
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //facade.Dispose();
         }
 
         private void openToolStripButton_Click(object sender, EventArgs e)
@@ -56,15 +68,26 @@ namespace VmstatAnalyzer
         {
             if (DialogResult.OK == openFileDialog.ShowDialog())
             {
-                string path = openFileDialog.FileName;
+                string fileName = openFileDialog.FileName;
 
-                VmstatView vmstatView = new VmstatView();
-                vmstatView.RightToLeftLayout = this.RightToLeftLayout;
-                vmstatView.Text = openFileDialog.SafeFileName;
-                vmstatView.Show(this.dockPanel);
-                vmstatView.SetData(path, os);
+                /*
+                facade.Do<string, OSType>(mainController.OpenFile, fileName, osType, delegate()
+                {
+                    Action post = delegate()
+                    {
+                        AnalyzerView1 analyzerView = new AnalyzerView1();
+                        analyzerView.RightToLeftLayout = this.RightToLeftLayout;
+                        analyzerView.Text = openFileDialog.SafeFileName;
+                        analyzerView.Show(this.dockPanel);
+                        analyzerView.SetData(fileName, osType);
 
-                AddDocument(vmstatView);
+                        AddDocument(analyzerView);
+                    };
+
+                    UICallback.Callback(this, post);
+                });
+                 * */
+                
             }
         }
 
@@ -130,31 +153,27 @@ namespace VmstatAnalyzer
             switch (index)
             {
                 case 0:
-                    os = OS.AIX;
+                    osType = OSTypes.AIX;
                     break;
 
                 case 1:
-                    os = OS.HPUX;
+                    osType = OSTypes.HPUX;
                     break;
 
                 case 2:
-                    os = OS.Solaris;
-                    break;
-
-                case 3:
-                    os = OS.Linux2541;
+                    osType = OSTypes.Solaris;
                     break;
 
                 case 4:
-                    os = OS.Linux;
+                    osType = OSTypes.Linux;
                     break;
 
                 case 5:
-                    os = OS.BSD;
+                    osType = OSTypes.BSD;
                     break;
 
                 default:
-                    os = OS.AIX;
+                    osType = OSTypes.AIX;
                     break;
             }
 

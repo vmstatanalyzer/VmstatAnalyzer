@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace VmstatAnalyzer.Core
+namespace VmstatAnalyzer.Domain
 {
     [Serializable]
     public class Options

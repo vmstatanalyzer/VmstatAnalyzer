@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VmstatAnalyzer.Core
+namespace VmstatAnalyzer.Domain
 {
-    public enum OS
+    public enum OSTypes
     {
         AIX, 
-        BSD, 
-        HPUX,
-        Linux2541,
-        Linux,
-        Solaris 
+        HPUX, 
+        Solaris, 
+        Linux, 
+        BSD
     }
 }

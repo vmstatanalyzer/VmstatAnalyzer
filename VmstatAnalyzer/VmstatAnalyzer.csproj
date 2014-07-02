@@ -56,6 +56,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\System.Windows.Forms.Ribbon35.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -79,20 +83,34 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Core\ChartBuilder.cs" />
-    <Compile Include="Core\DataEventArgs.cs" />
-    <Compile Include="Core\ImageBuilder.cs" />
-    <Compile Include="Core\IXmlSerializerFacade.cs" />
-    <Compile Include="Core\Options.cs" />
-    <Compile Include="Core\DataSource.cs" />
-    <Compile Include="Core\XmlSerializerFacade.cs" />
-    <Compile Include="VmstatView.cs">
+    <Compile Include="Repository\VmstatDataLoader.cs" />
+    <Compile Include="Repository\VmstatDataSource.cs" />
+    <Compile Include="VChartForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VmstatView.Designer.cs">
-      <DependentUpon>VmstatView.cs</DependentUpon>
+    <Compile Include="VChartForm.Designer.cs">
+      <DependentUpon>VChartForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Core\OS.cs" />
+    <Compile Include="View\ChartBuilder.cs" />
+    <Compile Include="Core\Prev\DataEventArgs.cs" />
+    <Compile Include="Core\Prev\ImageBuilder.cs" />
+    <Compile Include="Core\Prev\IXmlSerializerFacade.cs" />
+    <Compile Include="Core\Prev\Options.cs" />
+    <Compile Include="Core\Prev\DataSource.cs" />
+    <Compile Include="Core\Prev\UICallback.cs" />
+    <Compile Include="Domain\OSNames.cs" />
+    <Compile Include="Domain\DataContext.cs" />
+    <Compile Include="Repository\VmstatColumns.cs" />
+    <Compile Include="Core\Prev\XmlSerializerFacade.cs" />
+    <Compile Include="Business\VmstatService.cs" />
+    <Compile Include="Repository\VmstatRepository.cs" />
+    <Compile Include="View\VmstatView1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\VmstatView1.Designer.cs">
+      <DependentUpon>VmstatView1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\OSTypes.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,11 +119,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Component\VChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Component\VChart.Designer.cs">
+      <DependentUpon>VChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\VmstatView2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\VmstatView2.Designer.cs">
+      <DependentUpon>VmstatView2.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VmstatView.resx">
-      <DependentUpon>VmstatView.cs</DependentUpon>
+    <EmbeddedResource Include="VChartForm.resx">
+      <DependentUpon>VChartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\VmstatView1.resx">
+      <DependentUpon>VmstatView1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -120,6 +153,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\Component\VChart.resx">
+      <DependentUpon>VChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\VmstatView2.resx">
+      <DependentUpon>VmstatView2.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Data\ourhome63_1228_vmstat.log">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -134,6 +176,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Library\license.txt" />
+    <Content Include="Library\System.Windows.Forms.Ribbon35.dll" />
+    <Content Include="Library\System.Windows.Forms.Ribbon35.pdb" />
+    <Content Include="Library\WeifenLuo.WinFormsUI.Docking.pdb" />
+    <Content Include="Repository\!Repository.txt" />
     <None Include="Resources\analyzer.ico" />
     <None Include="Resources\log.ico" />
     <None Include="Resources\monitoring.ico" />
@@ -141,11 +188,7 @@
     <None Include="Resources\document.png" />
     <Content Include="Library\WeifenLuo.WinFormsUI.Docking.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="Model\" />
-    <Folder Include="View\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
