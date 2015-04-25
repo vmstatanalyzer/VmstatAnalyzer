@@ -1,6 +1,6 @@
-﻿namespace VmstatAnalyzer
+﻿namespace VmstatAnalyzer.View
 {
-    partial class VChartForm
+    partial class DataForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,27 +33,28 @@
             // 
             // vChart1
             // 
-            this.vChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vChart1.Location = new System.Drawing.Point(0, 0);
+            this.vChart1.Location = new System.Drawing.Point(12, 12);
             this.vChart1.Name = "vChart1";
-            this.vChart1.Size = new System.Drawing.Size(284, 262);
+            this.vChart1.Size = new System.Drawing.Size(314, 230);
             this.vChart1.TabIndex = 0;
             // 
-            // VChartForm
+            // DataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(338, 254);
             this.Controls.Add(this.vChart1);
-            this.Name = "VChartForm";
-            this.Text = "VChartForm";
-            this.Load += new System.EventHandler(this.VChartForm_Load);
+            this.Name = "DataForm";
+            this.Text = "DataForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.DataForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private View.Component.VChart vChart1;
+        private Component.VChart vChart1;
+
     }
 }

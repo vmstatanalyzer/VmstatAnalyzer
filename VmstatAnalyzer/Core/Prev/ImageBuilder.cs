@@ -13,7 +13,7 @@ namespace VmstatAnalyzer.Domain
 {
     public class ImageBuilder
     {
-        public void CopyChartToClipboard(Chart chart)
+        public void CopyToClipboard(Chart chart)
         {
             MemoryStream stream = new MemoryStream();
             chart.SaveImage(stream, ChartImageFormat.Bmp);
@@ -21,7 +21,7 @@ namespace VmstatAnalyzer.Domain
             Clipboard.SetDataObject(bitmap);
         }
 
-        public void ExportChart(Chart chart)
+        public void ExportToImage(Chart chart)
         {
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.Filter = "Bitmap (*.bmp)|*.bmp|JPEG (*.jpg)|*.jpg|PNG (*.png)|*.png|GIF (*.gif)|*.gif|TIFF (*.tif)|*.tif|EMF (*.emf)|*.emf|EMF-Plus (*.emf)|*.emf|EMF-Dual (*.emf)|*.emf";
@@ -31,7 +31,7 @@ namespace VmstatAnalyzer.Domain
             if (DialogResult.OK == dialog.ShowDialog())
             {
                 string fileName = dialog.FileName;
-                ChartImageFormat imageFormat = ChartImageFormat.Emf;
+                ChartImageFormat imageFormat = ChartImageFormat.Bmp;
 
                 switch (dialog.FilterIndex)
                 {

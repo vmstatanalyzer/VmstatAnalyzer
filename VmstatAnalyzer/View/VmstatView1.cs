@@ -617,7 +617,7 @@ namespace VmstatAnalyzer.View
             Chart chart = (Chart)contextMenuStrip.SourceControl;
 
             ImageBuilder imageBuilder = new ImageBuilder();
-            imageBuilder.CopyChartToClipboard(chart);
+            imageBuilder.CopyToClipboard(chart);
         }
 
         private void toolStripMenuItemExportImage_Click(object sender, EventArgs e)
@@ -625,7 +625,7 @@ namespace VmstatAnalyzer.View
             Chart chart = (Chart)contextMenuStrip.SourceControl;
 
             ImageBuilder imageBuilder = new ImageBuilder();
-            imageBuilder.ExportChart(chart);
+            imageBuilder.ExportToImage(chart);
         }
 
         private void toolStripMenuItemCopyToClipboardRaw_Click(object sender, EventArgs e)

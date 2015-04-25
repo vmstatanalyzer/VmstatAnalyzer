@@ -52,6 +52,9 @@
     <ApplicationIcon>Resources\analyzer.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CodeFluent.Runtime.Client">
+      <HintPath>..\packages\CodeFluentRuntimeClient.1.0.0.805\lib\CodeFluent.Runtime.Client.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -83,13 +86,24 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Repository\VmstatDataLoader.cs" />
-    <Compile Include="Repository\VmstatDataSource.cs" />
-    <Compile Include="VChartForm.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VChartForm.Designer.cs">
-      <DependentUpon>VChartForm.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\VmstatDataLoader.cs" />
+    <Compile Include="Repository\VmstatDataSource.cs" />
+    <Compile Include="View\AddRemoteHostForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddRemoteHostForm.Designer.cs">
+      <DependentUpon>AddRemoteHostForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ChartBuilder.cs" />
     <Compile Include="Core\Prev\DataEventArgs.cs" />
@@ -104,6 +118,12 @@
     <Compile Include="Core\Prev\XmlSerializerFacade.cs" />
     <Compile Include="Business\VmstatService.cs" />
     <Compile Include="Repository\VmstatRepository.cs" />
+    <Compile Include="View\DataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DataForm.Designer.cs">
+      <DependentUpon>DataForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\VmstatView1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,11 +131,11 @@
       <DependentUpon>VmstatView1.cs</DependentUpon>
     </Compile>
     <Compile Include="Domain\OSTypes.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="MainForm2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="MainForm2.Designer.cs">
+      <DependentUpon>MainForm2.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,25 +154,26 @@
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VChartForm.resx">
-      <DependentUpon>VChartForm.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AddRemoteHostForm.resx">
+      <DependentUpon>AddRemoteHostForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DataForm.resx">
+      <DependentUpon>DataForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\VmstatView1.resx">
       <DependentUpon>VmstatView1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm2.resx">
+      <DependentUpon>MainForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="View\Component\VChart.resx">
       <DependentUpon>VChart.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +183,7 @@
     <None Include="Data\ourhome63_1228_vmstat.log">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -176,11 +198,82 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="External\Readme.txt" />
+    <Content Include="External\x64\CodeFluent.Runtime.Compression.dll" />
+    <Content Include="External\x86\CodeFluent.Runtime.Compression.dll" />
     <Content Include="Library\license.txt" />
     <Content Include="Library\System.Windows.Forms.Ribbon35.dll" />
     <Content Include="Library\System.Windows.Forms.Ribbon35.pdb" />
     <Content Include="Library\WeifenLuo.WinFormsUI.Docking.pdb" />
     <Content Include="Repository\!Repository.txt" />
+    <None Include="Resources\network24.png" />
+    <None Include="Resources\network32.png" />
+    <None Include="Resources\wordtemplate32.png" />
+    <None Include="Resources\worddocument32.png" />
+    <None Include="Resources\word2003doc32.png" />
+    <None Include="Resources\unorderedlist16.png" />
+    <None Include="Resources\undo16.png" />
+    <None Include="Resources\underline16.png" />
+    <None Include="Resources\themefont.png" />
+    <None Include="Resources\textalignright16.png" />
+    <None Include="Resources\textalignleft16.png" />
+    <None Include="Resources\textalignjustify16.png" />
+    <None Include="Resources\textaligncenter16.png" />
+    <None Include="Resources\superindex16.png" />
+    <None Include="Resources\subindex16.png" />
+    <None Include="Resources\styleset16.png" />
+    <None Include="Resources\stylechange32.png" />
+    <None Include="Resources\style16.png" />
+    <None Include="Resources\strikethru16.png" />
+    <None Include="Resources\sort16.png" />
+    <None Include="Resources\send32.png" />
+    <None Include="Resources\select16.png" />
+    <None Include="Resources\saveas321.png" />
+    <None Include="Resources\saveas32.png" />
+    <None Include="Resources\save32.png" />
+    <None Include="Resources\save16.png" />
+    <None Include="Resources\replace16.png" />
+    <None Include="Resources\publish32.png" />
+    <None Include="Resources\printquick32.png" />
+    <None Include="Resources\printquick16.png" />
+    <None Include="Resources\printpreview32.png" />
+    <None Include="Resources\print321.png" />
+    <None Include="Resources\print32.png" />
+    <None Include="Resources\prepare32.png" />
+    <None Include="Resources\pastespecial16.png" />
+    <None Include="Resources\pastelink16.png" />
+    <None Include="Resources\paste321.png" />
+    <None Include="Resources\paste16.png" />
+    <None Include="Resources\paragraphspacing16.png" />
+    <None Include="Resources\pageblank16.png" />
+    <None Include="Resources\orderedlist16.png" />
+    <None Include="Resources\options16.png" />
+    <None Include="Resources\open32.png" />
+    <None Include="Resources\open16.png" />
+    <None Include="Resources\newdocument32.png" />
+    <None Include="Resources\multilevellist16.png" />
+    <None Include="Resources\italic16.png" />
+    <None Include="Resources\invisiblechars16.png" />
+    <None Include="Resources\indentincrease16.png" />
+    <None Include="Resources\indentdecrease161.png" />
+    <None Include="Resources\indentdecrease16.png" />
+    <None Include="Resources\hilight16.png" />
+    <None Include="Resources\goto16.png" />
+    <None Include="Resources\fontsizeincrease16.png" />
+    <None Include="Resources\fontsizedecrease16.png" />
+    <None Include="Resources\fontcolor16.png" />
+    <None Include="Resources\find32.png" />
+    <None Include="Resources\fill16.png" />
+    <None Include="Resources\exit16.png" />
+    <None Include="Resources\eraseformat16.png" />
+    <None Include="Resources\cut16.png" />
+    <None Include="Resources\copyformat16.png" />
+    <None Include="Resources\copy16.png" />
+    <None Include="Resources\close32.png" />
+    <None Include="Resources\casing16.png" />
+    <None Include="Resources\borderbottom16.png" />
+    <None Include="Resources\bold16.png" />
+    <None Include="Resources\addons32.png" />
     <None Include="Resources\analyzer.ico" />
     <None Include="Resources\log.ico" />
     <None Include="Resources\monitoring.ico" />
