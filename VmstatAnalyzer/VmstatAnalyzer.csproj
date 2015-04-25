@@ -86,6 +86,8 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\VmstatFileReader.cs" />
+    <Compile Include="Core\VmstatLineParser.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,7 +109,7 @@
     </Compile>
     <Compile Include="View\ChartBuilder.cs" />
     <Compile Include="Core\Prev\DataEventArgs.cs" />
-    <Compile Include="Core\Prev\ImageBuilder.cs" />
+    <Compile Include="Utility\ImageBuilder.cs" />
     <Compile Include="Core\Prev\IXmlSerializerFacade.cs" />
     <Compile Include="Core\Prev\Options.cs" />
     <Compile Include="Core\Prev\DataSource.cs" />
@@ -118,11 +120,35 @@
     <Compile Include="Core\Prev\XmlSerializerFacade.cs" />
     <Compile Include="Business\VmstatService.cs" />
     <Compile Include="Repository\VmstatRepository.cs" />
-    <Compile Include="View\DataForm.cs">
+    <Compile Include="View\Component\HSplitContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Component\HSplitContainer.Designer.cs">
+      <DependentUpon>HSplitContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Component\VDataGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Component\VDataGrid.Designer.cs">
+      <DependentUpon>VDataGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Component\VSplitContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Component\VSplitContainer.Designer.cs">
+      <DependentUpon>VSplitContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\VmstatForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\DataForm.Designer.cs">
-      <DependentUpon>DataForm.cs</DependentUpon>
+    <Compile Include="View\VmstatForm.Designer.cs">
+      <DependentUpon>VmstatForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\VmstatView2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\VmstatView2.Designer.cs">
+      <DependentUpon>VmstatView2.cs</DependentUpon>
     </Compile>
     <Compile Include="View\VmstatView1.cs">
       <SubType>Form</SubType>
@@ -145,12 +171,6 @@
     <Compile Include="View\Component\VChart.Designer.cs">
       <DependentUpon>VChart.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\VmstatView2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\VmstatView2.Designer.cs">
-      <DependentUpon>VmstatView2.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,8 +180,20 @@
     <EmbeddedResource Include="View\AddRemoteHostForm.resx">
       <DependentUpon>AddRemoteHostForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\DataForm.resx">
-      <DependentUpon>DataForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\Component\HSplitContainer.resx">
+      <DependentUpon>HSplitContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Component\VDataGrid.resx">
+      <DependentUpon>VDataGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Component\VSplitContainer.resx">
+      <DependentUpon>VSplitContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\VmstatForm.resx">
+      <DependentUpon>VmstatForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\VmstatView2.resx">
+      <DependentUpon>VmstatView2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\VmstatView1.resx">
       <DependentUpon>VmstatView1.cs</DependentUpon>
@@ -176,9 +208,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Component\VChart.resx">
       <DependentUpon>VChart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\VmstatView2.resx">
-      <DependentUpon>VmstatView2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Data\ourhome63_1228_vmstat.log">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VmstatAnalyzer.View
+namespace VmstatAnalyzer.View.Component
 {
-    public partial class DataForm : Form
+    public partial class VDataGrid : UserControl
     {
-        public DataForm()
+        public VDataGrid()
         {
             InitializeComponent();
         }
 
-        private void DataForm_Load(object sender, EventArgs e)
+        public void SetDataSource(BindingSource bindingSource)
         {
-            this.BringToFront();
+            dataGridView.DataSource = bindingSource;
         }
     }
 }

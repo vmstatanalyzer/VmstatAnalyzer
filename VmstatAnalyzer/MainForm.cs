@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using VmstatAnalyzer.Core;
 using VmstatAnalyzer.View;
 
 namespace VmstatAnalyzer
@@ -38,11 +39,16 @@ namespace VmstatAnalyzer
             {
                 string fileName = openFileDialog.FileName;
 
-                DataForm form = new DataForm();
+                VmstatFileReader vmstatFileReader = new VmstatFileReader();
+                DataTable table = vmstatFileReader.ReadFile(fileName);
+
+                VmstatForm form = new VmstatForm();
                 form.MdiParent = this;
                 form.Dock = DockStyle.Fill;
                 form.Parent = panel;
                 form.Show();
+
+                form.BindingDataSource(table);
             }
         }
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace VmstatAnalyzer.Domain
+namespace VmstatAnalyzer.Utility
 {
     public class ImageBuilder
     {
