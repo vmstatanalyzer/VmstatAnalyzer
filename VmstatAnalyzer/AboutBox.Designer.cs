@@ -86,7 +86,7 @@
             this.labelProductName.Name = "labelProductName";
             this.labelProductName.Size = new System.Drawing.Size(317, 19);
             this.labelProductName.TabIndex = 19;
-            this.labelProductName.Text = "Vmstat Analyzer";
+            this.labelProductName.Text = "VmstatAnalyzer";
             this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelVersion
@@ -137,7 +137,7 @@
             this.textBoxDescription.Size = new System.Drawing.Size(317, 137);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = "Vmstat Analyzer";
+            this.textBoxDescription.Text = "VmstatAnalyzer";
             // 
             // okButton
             // 

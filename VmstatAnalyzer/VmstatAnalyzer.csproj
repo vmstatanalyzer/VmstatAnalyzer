@@ -52,16 +52,13 @@
     <ApplicationIcon>Resources\analyzer.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CodeFluent.Runtime.Client">
-      <HintPath>..\packages\CodeFluentRuntimeClient.1.0.0.805\lib\CodeFluent.Runtime.Client.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Library\System.Windows.Forms.Ribbon35.dll</HintPath>
+      <HintPath>..\packages\Ribbon35\lib\net40\System.Windows.Forms.Ribbon35.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -76,7 +73,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Library\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+      <HintPath>..\packages\DockPanelSuite.2.9.0.0\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -107,7 +104,7 @@
     <Compile Include="View\AddRemoteHostForm.Designer.cs">
       <DependentUpon>AddRemoteHostForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ChartBuilder.cs" />
+    <Compile Include="Utility\ChartBuilder.cs" />
     <Compile Include="Core\Prev\DataEventArgs.cs" />
     <Compile Include="Utility\ImageBuilder.cs" />
     <Compile Include="Core\Prev\IXmlSerializerFacade.cs" />
@@ -118,8 +115,19 @@
     <Compile Include="Domain\DataContext.cs" />
     <Compile Include="Repository\VmstatColumns.cs" />
     <Compile Include="Core\Prev\XmlSerializerFacade.cs" />
-    <Compile Include="Business\VmstatService.cs" />
     <Compile Include="Repository\VmstatRepository.cs" />
+    <Compile Include="View\Component\CPUChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Component\CPUChart.Designer.cs">
+      <DependentUpon>CPUChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Component\CPUTotalChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Component\CPUTotalChart.Designer.cs">
+      <DependentUpon>CPUTotalChart.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Component\HSplitContainer.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -209,7 +217,7 @@
     <EmbeddedResource Include="View\Component\VChart.resx">
       <DependentUpon>VChart.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Data\ourhome63_1228_vmstat.log">
+    <None Include="Data\aix-sample.log">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
@@ -227,14 +235,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="External\Readme.txt" />
-    <Content Include="External\x64\CodeFluent.Runtime.Compression.dll" />
-    <Content Include="External\x86\CodeFluent.Runtime.Compression.dll" />
-    <Content Include="Library\license.txt" />
-    <Content Include="Library\System.Windows.Forms.Ribbon35.dll" />
-    <Content Include="Library\System.Windows.Forms.Ribbon35.pdb" />
-    <Content Include="Library\WeifenLuo.WinFormsUI.Docking.pdb" />
-    <Content Include="Repository\!Repository.txt" />
     <None Include="Resources\network24.png" />
     <None Include="Resources\network32.png" />
     <None Include="Resources\wordtemplate32.png" />
@@ -308,7 +308,6 @@
     <None Include="Resources\monitoring.ico" />
     <None Include="Resources\analyzer.png" />
     <None Include="Resources\document.png" />
-    <Content Include="Library\WeifenLuo.WinFormsUI.Docking.dll" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

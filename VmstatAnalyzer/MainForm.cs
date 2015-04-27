@@ -33,6 +33,26 @@ namespace VmstatAnalyzer
             AddRemote();
         }
 
+        private void ribbonOrbMenuItemOpen_Click(object sender, EventArgs e)
+        {
+            OpenFile();
+        }
+
+        private void ribbonOrbMenuItemClose_Click(object sender, EventArgs e)
+        {
+            CloseMdiChild();
+        }
+
+        private void ribbonOrbMenuItemAbout_Click(object sender, EventArgs e)
+        {
+            ShowAboutBox();
+        }
+
+        private void ribbonOrbOptionButtonExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void OpenFile()
         {
             if (DialogResult.OK == openFileDialog.ShowDialog())
@@ -43,12 +63,19 @@ namespace VmstatAnalyzer
                 DataTable table = vmstatFileReader.ReadFile(fileName);
 
                 VmstatForm form = new VmstatForm();
+                form.Text = openFileDialog.SafeFileName;
                 form.MdiParent = this;
-                form.Dock = DockStyle.Fill;
-                form.Parent = panel;
                 form.Show();
 
-                form.BindingDataSource(table);
+                form.SetDataSource(table);
+            }
+        }
+
+        private void CloseMdiChild()
+        {
+            while (this.ActiveMdiChild != null)
+            {
+                this.ActiveMdiChild.Close();
             }
         }
 
@@ -56,6 +83,12 @@ namespace VmstatAnalyzer
         {
             AddRemoteHostForm form = new AddRemoteHostForm();
             form.ShowDialog();
+        }
+
+        private void ShowAboutBox()
+        {
+            AboutBox aboutBox = new AboutBox();
+            aboutBox.ShowDialog();
         }
     }
 }

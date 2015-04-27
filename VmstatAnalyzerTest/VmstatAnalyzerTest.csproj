@@ -35,12 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Csla">
-      <HintPath>..\packages\CSLA-Core.4.3.12\lib\net40\Csla.dll</HintPath>
-    </Reference>
-    <Reference Include="Csla.XmlSerializers">
-      <HintPath>..\packages\CSLA-Core.4.3.12\lib\net40\Csla.XmlSerializers.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -65,7 +59,6 @@
     <Compile Include="Core\VmstatLineParserTest.cs" />
     <Compile Include="Core\VmstatFileReaderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\VmstatDataLoaderTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VmstatAnalyzer\VmstatAnalyzer.csproj">
@@ -74,17 +67,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\LGEGLTDSE2Q_1211_vmstat.log">
+    <None Include="Data\aix-sample.log">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Data\ourhome63_1228_vmstat.log">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Entities.csp" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="readme.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

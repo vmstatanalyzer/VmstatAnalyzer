@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // 어셈블리의 일반 정보는 다음 특성 집합을 통해 제어됩니다.
 // 어셈블리와 관련된 정보를 수정하려면
 // 이 특성 값을 변경하십시오.
-[assembly: AssemblyTitle("Vmstat Analyzer")]
+[assembly: AssemblyTitle("VmstatAnalyzer")]
 [assembly: AssemblyDescription("Vmstat Analyzer Tool")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Yoon Min Kyung, Korea")]
-[assembly: AssemblyProduct("Vmstat Analyzer")]
+[assembly: AssemblyProduct("VmstatAnalyzer")]
 [assembly: AssemblyCopyright("Copyright © 2013 Yoon Min Kyung. All rights reserved.")]
-[assembly: AssemblyTrademark("Vmstat Analyzer")]
+[assembly: AssemblyTrademark("VmstatAnalyzer")]
 [assembly: AssemblyCulture("")]
 
 // ComVisible을 false로 설정하면 이 어셈블리의 형식이 COM 구성 요소에 

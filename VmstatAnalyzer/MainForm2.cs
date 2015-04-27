@@ -182,5 +182,10 @@ namespace VmstatAnalyzer
             XmlSerializerFacade facade = new XmlSerializerFacade(typeof(Options), "options.config", options);
             facade.Serialize();
         }
+
+        private void helpToolStripButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
